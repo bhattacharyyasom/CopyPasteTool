@@ -56,7 +56,6 @@ libraryDependencies ++= Seq(
 		       "org.scalacheck" % "scalacheck_2.11" % "1.12.6" % "test",
 		       "org.scalaz" % "scalaz-scalacheck-binding_2.11" % "7.1.11" % "test",
                        "org.scalactic"              % "scalactic_2.11"                          % scalacticVersion ,
-                       /*Dependencies for CDCL May not be necessary later*/
                        "org.springframework"        % "spring-context"                          % springLibraryVersion,
                        "org.springframework"        % "spring-beans"                            % springLibraryVersion,
                        "org.springframework"        % "spring-core"                             % springLibraryVersion,
