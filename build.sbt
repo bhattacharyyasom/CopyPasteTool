@@ -9,6 +9,13 @@ version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.11.8"
 
+TaskKey[Unit]("checkScalariform") := {
+  val diff = "git diff".!!
+  if(diff.nonEmpty){
+    sys.error("Working directory is dirty!\n" + diff)
+  }
+}
+
 val akkaActorAPIVersion        = "2.3.15"
 val scalazCoreVersion          = "7.1.11"
 val scalacticVersion           = "2.2.6"
