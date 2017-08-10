@@ -1,11 +1,12 @@
 package org.som.listeners
 
-import akka.actor.ActorSystem
-import akka.actor.Props
-import akka.actor.actorRef2Scala
 import org.jnativehook.keyboard.NativeKeyEvent
 import org.som.actors.KeyPressedActor
 import org.som.copyActorSystem
+
+import akka.actor.ActorSystem
+import akka.actor.Props
+import akka.actor.actorRef2Scala
 
 /**
  * The singleton listener object we are using to listen for events and delegate them to actors as needs be
