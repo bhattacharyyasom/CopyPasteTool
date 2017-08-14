@@ -3,14 +3,13 @@ package org.som.actors
 import java.awt.Toolkit
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.StringSelection
-
 import org.jnativehook.keyboard.NativeKeyEvent
 import org.scalatest.WordSpecLike
-
 import akka.actor.ActorSystem
 import akka.testkit.ImplicitSender
 import akka.testkit.TestActorRef
 import akka.testkit.TestKit
+import org.messages.CopySuccess
 
 class KeyPressedActorSpec extends TestKit(ActorSystem("MySpec")) with ImplicitSender
     with WordSpecLike {
@@ -24,6 +23,7 @@ class KeyPressedActorSpec extends TestKit(ActorSystem("MySpec")) with ImplicitSe
       clipboard.setContents(new StringSelection("copytest"), new StringSelection("copytest"))
       //This next event is a a CTRL +C mock if you will
       actor ! new NativeKeyEvent(2401, 2, 67, 46, '\0', 1)
+      Thread.sleep(1100)
       assert(actor.underlyingActor.copyQueue.dequeue().equals("copytest"))
     }
   }
@@ -37,5 +37,15 @@ class KeyPressedActorSpec extends TestKit(ActorSystem("MySpec")) with ImplicitSe
       assert(clipboard.getData(DataFlavor.stringFlavor).toString().equals("copytest"))
     }
   }
-}
+/*  
+  "A Key Pressed Actor" should {
+    "receive a copy success message when we hit a CTRL +C".in {
+      val actor = TestActorRef[KeyPressedActor]
+      clipboard.setContents(new StringSelection("copytest"), new StringSelection("copytest"))
+      //This next event is a a CTRL +C mock if you will
+      actor ! new NativeKeyEvent(2401, 2, 67, 46, '\0', 1)
+      expectMsg(CopySuccess(_))
+    }*/
+  }
+
 

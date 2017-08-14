@@ -1,11 +1,8 @@
 package org.som.console
 
-import org.jnativehook.NativeHookException
 import org.jnativehook.GlobalScreen
+import org.jnativehook.NativeHookException
 import org.som.listeners.KeyListener
-import akka.actor.ActorSystem
-import akka.actor.Props
-import org.som._
 
 /**
  * This app object is the main stub that registers listeners for the entire screen
