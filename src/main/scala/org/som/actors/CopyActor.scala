@@ -20,7 +20,7 @@ class CopyActor extends Actor {
   val clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
   def receive = {
     case CopyMessage =>
-      Thread.sleep(1000) // Not recommended but for purposes of demo and as latency affects the system clipboard updates.
+      //Thread.sleep(1000) // Not recommended but for purposes of demo and as latency affects the system clipboard updates.
       Try(clipboard.getData(DataFlavor.stringFlavor).toString()) match {
         case Success(a)         => sender ! CopySuccess(a)
         case Failure(exception) => self ! CopyMessage
